@@ -1,0 +1,53 @@
+/*ESPACIO ARRIBA Y COLOR DE FONDO*/
+#page-top{
+    padding-top: 25px;
+    background-color: #D7D7D7;
+    overflow-x: hidden; /* Ocultar el scroll horizontal */
+}
+
+/*CARACTERISTICAS DEL DESPLEGABLE DEL MENU*/
+.dropdown .btn-default {
+  background-color: grey;
+  margin-top: -1%;
+  margin-left: 1%;
+}
+
+/*contenedor que ocupa la ventana del navegador*/
+.contenedor {
+  display: flex;
+  /*elementos del contenedor pueder ser organizados y posicionados*/
+  height: 100vh;
+}
+
+
+/*mostrar la imagen en el contenedor*/
+.imagen-contenedor {
+  flex: 1;
+  overflow: hidden;
+  background-size: cover;
+  margin-top: -50%;
+}
+
+/*ajustar la imagen dentro del contenedor*/
+.imagen-contenedor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*mostrar el texto dentro del contenedor*/
+.texto-contenedor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /*elementos dentro del contenedor alineados en columnas*/
+    align-items: center;
+    margin-top: 3%;
+}
+
+/*propiedades del texto dentro del contenedor*/
+p {
+  margin: 0;
+  text-align: center;
+  font-size: 17px;
+}
