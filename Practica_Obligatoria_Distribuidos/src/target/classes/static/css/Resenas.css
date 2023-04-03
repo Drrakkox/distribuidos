@@ -1,0 +1,25 @@
+/*ESPACIO ARRIBA Y COLOR DE FONDO*/
+#page-top{
+    padding-top: 25px;
+    background-color: #D7D7D7;
+}
+
+/*CARACTERISTICAS DEL DESPLEGABLE DEL MENU*/
+.dropdown .btn-default {
+  background-color: #D7D7D7;
+  margin-top: -1%;
+  margin-left: 1%;
+}
+
+/*PARTE DE LAS RESEÑAS*/
+fieldset {
+  border: 2px solid black;
+  padding: 10px;
+  text-align: justify;
+}
+
+/*LETRAS DE RESEÑA*/
+.nombre{
+    color: white;
+    font-weight: bold;
+}
