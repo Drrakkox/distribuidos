@@ -11499,6 +11499,7 @@ body {
   outline: none;
   background-color: transparent;
 }
+
 @media (min-width: 992px) {
   #mainNav {
     padding-top: 0;
@@ -11698,3 +11699,11 @@ body {
 .footer {
   padding: 5rem 0;
 }
+#main2{
+    margin-left: 0px;
+    text-color: #000;
+}
+#navbarSegundo{
+  margin-left: 30%;
+}
+
