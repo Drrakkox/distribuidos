@@ -10,4 +10,6 @@ public class ExampleController {
     public String personal_data(Model model) {
         return "index.html";
     }
+
+
 }
