@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Iniciar Sesion</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/CuentasusuarioAdmin.css" rel="stylesheet"/>
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--DESACTIVAR EL SCROLL DE LA DERECHA-->
+    <style type="text/css" media="screen">
+        html,body {overflow:hidden;}
+    </style>
+
+
+
+
+</head>
+<body id="page-top">
+<!--BARRA DEL MENU -->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container-fluid" >
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class ="navbar-nav navbar-rigth navbar-no-padding">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                <li class="nav-item"><a class="nav-link" href="Resenas.html">Reseñas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                <li class="nav-item"><a class="nav-link" href="NuevaResena.html">Nuevas Reseñas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                <li class="nav-item"><a class="nav-link" href="CuentasUsuarioAdmin.html">Iniciar Sesion</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="contenedor-imagen">
+    <img src="assets\img\Fondo35.png" alt="Log in">
+    <div class="contenedor">
+        <div class="texto-contenedor">
+            <h2 class="titulo"><u>USUARIO</u></h2>
+            <br>
+            <p>Si quieres colaborar en nuestras reseñas, modificarlas, borrarlas o interactuar con nosotros no olvides iniciar sesión o registrarte</p>
+            <p>Inicia sesión con tu email</p>
+            <form action="/posting/"method="post">
+            <!--<form action="Resenas.html">-->
+                <div class="mb-3 mt-3">
+                    <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"
+                                                               style="padding-right: 10px;"></i></span>
+                        <input type="email" required class="form-control" id="email" placeholder="Email*" name="email"
+                               style="padding-right: 50px;">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <!--trabajamos con las imagenes en linea y ponemos un espacio entre la imagen y el cuadro de texto-->
+                        <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"
+                                                           style="padding-right: 10px;"></i></span>
+                        <input type="password" required class="form-control" id="password" placeholder="Contraseña*" name="password"
+                               style="padding-right: 50px;">
+                    </div>
+                </div>
+
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="remember">...  Recordar
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-dark mx-auto d-block" style="padding-left: 80px; padding-right: 80px;
+                                        background-color: grey;
+                                        border: none;">
+                    Entrar
+                </button>
+                <br>
+                <button type="submit" class="btn btn-dark mx-auto d-block" style="padding-left: 80px; padding-right: 80px;
+                                    background-color: grey;
+                                    border: none;">
+                    Cerrar sesion
+                </button>
+                <br>
+                <p>Regístrate con tu email</p>
+                <form action="NuevaResena.html">
+                    <div class="mb-3 mt-3">
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"
+                                                           style="padding-right: 10px;"></i></span>
+                            <input type="email" class="form-control" id="email3" placeholder="Email*" name="email"
+                                   style="padding-right: 50px;">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <!--trabajamos con las imagenes en linea y ponemos un espacio entre la imagen y el cuadro de texto-->
+                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"
+                                                               style="padding-right: 10px;"></i></span>
+                            <input type="password" class="form-control" id="pwd" placeholder="Contraseña*" name="pswd"
+                                   style="padding-right: 50px;">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <!--trabajamos con las imagenes en linea y ponemos un espacio entre la imagen y el cuadro de texto-->
+                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"
+                                                               style="padding-right: 10px;"></i></span>
+                            <input type="password" class="form-control" id="pwd2" placeholder="Confirme contraseña*" name="pswd"
+                                   style="padding-right: 50px;">
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-dark mx-auto d-block">
+                        Registrarse
+                    </button>
+                </form>
+            </form>
+        </div>
+        <div class="texto-contenedor2">
+            <h2 class="titulo"><u>ADMINISTRADOR</u></h2>
+            <br>
+            <p class="p2">Área protegida. Solo pueden acceder los administradores</p>
+            <p class="p2">Inicia sesión con tu email</p>
+            <form action="/posting/"method="post">
+            <!--<form action="Resenas.html">-->
+                <div class="mb-3 mt-3">
+                    <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"
+                                                               style="padding-right: 10px;"></i></span>
+                        <input type="email" required class="form-control" id="email2" placeholder="Email*" name="email"
+                               style="padding-right: 50px;">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="input-group">
+                        <!--trabajamos con las imagenes en linea y ponemos un espacio entre la imagen y el cuadro de texto-->
+                        <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"
+                                                           style="padding-right: 10px;"></i></span>
+                        <input type="password" required class="form-control" id="password2" placeholder="Contraseña*" name="password"
+                               style="padding-right: 50px;">
+                    </div>
+                </div>
+
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="remember"> ... Recordar
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-dark mx-auto d-block" style="padding-left: 80px; padding-right: 80px;
+                                        background-color: grey;
+                                        border: none;">
+                    Entrar
+                </button>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
