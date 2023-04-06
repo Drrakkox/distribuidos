@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <title>Anuncios</title>
+      </head>
+      <body>
+          {{#anuncios}}
+          <div style="border: 1px sollid red;">
+            <span>ID: {{id}}</span><br>
+            <span>Nombre: {{nombre}}</span><br>
+            <span>Asunto: {{asunto}}</span><br>
+            <span>Comentario: {{comentario}}</span><br>
+            <span id="likes--{{id}}">Likes: {{likes}}</span><br>
+            <button onclick="addLikeToAd({{id}})">Agregar Like</button><br>
+          </div>
+          {{/anuncios}}
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></<script !src=""></script>
+      <script src="/js/ejemploAjax.js"></script>
+      </body>
+</html>
