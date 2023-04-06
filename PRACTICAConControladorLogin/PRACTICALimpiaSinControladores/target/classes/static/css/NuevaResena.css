@@ -1,0 +1,64 @@
+/*ESPACIO ARRIBA Y COLOR DE FONDO*/
+#page-top{
+    background-color: #D7D7D7;
+    overflow-x: hidden; /* Ocultar el scroll horizontal */
+}
+
+/*CARACTERISTICAS DEL DESPLEGABLE DEL MENU*/
+.dropdown .btn-default {
+  background-color: grey;
+  margin-top: -1%;
+  margin-left: 1%;
+}
+.formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -2%;
+}
+
+
+.navbar{
+    background-color: white;
+}
+
+.navbar-nav li {
+  margin-right:-310px;
+  font-size: 16px;
+  height: 8vh;
+  padding-top: 20px;
+  margin-left: 350px;
+}
+
+
+.navbar-nav li a:hover {
+  color: red;
+}
+
+.container{
+      display: flex;
+      height: 650px;
+      align-items:right;
+}
+.box1{
+    background-color: white;
+    width:500px;
+    flex-grow: 1;
+    border-right: 1px solid white; /* borde derecho blanco */
+    flex-grow:1;
+}
+
+.box3{
+    background-color: white;
+    width:500px;
+    border-left: 1px solid white; /* borde derecho blanco */
+    flex-grow:1;
+}
+
+.box2 {
+  background-color: grey;
+  width:500px;
+  flex-grow:2;
+}
