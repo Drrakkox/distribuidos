@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Nueva Reseña</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/NuevaResena.css" rel="stylesheet"/>
+        <!--BOOTSTRAP-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+              integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </style>
+    </head>
+    <body style="background-color: #D7D7D7;">
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container-fluid" >
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class ="navbar-nav navbar-rigth navbar-no-padding">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/anuncios/">Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/NuevaResena">Nuevas Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/IniciarSesion">Iniciar Sesion</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+        <h1 style="text-align: center;">Crear Reseña</h1>
+        <form method="post" action="/anuncios/" style="text-align: center;">
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="valoracion">Valoracion:</label>
+                <input type="number" id="valoracion" name="valoracion" step="0.5" min="0" max="10" required>
+            </div>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
+            </div>
+            <div>
+                <label for="direccion">Direccion:</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
+            <div>
+                <label for="localidad">Localidad:</label>
+                <input type="text" id="localidad" name="localidad" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" required>
+            </div>
+            <div>
+                <label for="m2">M2:</label>
+                <input type="number" id="m2" name="m2" required>
+            </div>
+            <div>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" min="0" required>
+            </div>
+            <div>
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario" cols="40" rows="8" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+</html>
