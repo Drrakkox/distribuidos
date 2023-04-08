@@ -5,9 +5,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class AnuncioController {
@@ -44,5 +47,17 @@ public class AnuncioController {
         } else {
             return "redirect:/IniciarSesion"; // Redirigir al usuario a la página de inicio de sesión
         }
+    }
+
+    @GetMapping("/anuncios/sortedByName")
+    public String getAllSortedByName(Model model) {
+        model.addAttribute("anuncios", anuncioService.getAllSortedByName());
+        return "anuncios_template";
+    }
+
+    @GetMapping("/anuncios/sortedByPrecio")
+    public String getAllSortedByPrecio(Model model) {
+        model.addAttribute("anuncios", anuncioService.getAllSortedByPrecio());
+        return "anuncios_template";
     }
 }

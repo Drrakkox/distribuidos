@@ -3,9 +3,12 @@ package urjc.code.controller;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Service
 public class AnuncioService {
@@ -38,6 +41,18 @@ public class AnuncioService {
         anuncio.setId(tem);
         anuncioHashMap.put(tem, anuncio);
         return anuncio;
+    }
+
+    public List<Anuncio> getAllSortedByName() {
+        return anuncioHashMap.values().stream()
+                .sorted(Comparator.comparing(Anuncio::getNombre))
+                .collect(Collectors.toList());
+    }
+
+    public List<Anuncio> getAllSortedByPrecio() {
+        return anuncioHashMap.values().stream()
+                .sorted(Comparator.comparingDouble(Anuncio::getPrecio))
+                .collect(Collectors.toList());
     }
 
 }
