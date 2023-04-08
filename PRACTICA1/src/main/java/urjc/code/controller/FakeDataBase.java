@@ -4,6 +4,7 @@ package urjc.code.controller;
 esta clase como un componente que se debe reistrar en el contexto de la aplicacion*/
 import org.springframework.stereotype.Component;
 /*Importa la clase HashMap de Java, que se utilizará para simular la BD en memoria*/
+import java.util.Collection;
 import java.util.HashMap;
 
 @Component //anota esta clase como componente de Spring, lo que permitirá que se inyecte en otras clases
@@ -18,6 +19,15 @@ public class FakeDataBase {
         User admin = new User("admin@admin", "admin", "admin");
         this.addUser(admin);
     }
+
+    public Collection<User> getAllUsers() {
+        return usuarios.values();
+    }
+
+    public User getUserByEmail(String email) {
+        return usuarios.get(email);
+    }
+
 
     /*Define un método llamado addUser que acepta un objeto UserModel como parámetro y devuelve un valor booleano que
     indica si el registro se realizó con éxito.*/

@@ -21,8 +21,10 @@ public class AnuncioController {
         if (session != null && session.getAttribute("email") != null) {
             String email = (String) session.getAttribute("email");
             model.addAttribute("email", email);
+            return "formAnuncio.html";
+        } else {
+            return "redirect:/CuentasUsuarioAdmin.html?message=error&errorType=email"; // Redirigir al usuario a la página de inicio de sesión
         }
-        return "formAnuncio.html";
     }
 
     @GetMapping("/anuncios/")
@@ -33,9 +35,14 @@ public class AnuncioController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/anuncios/")
-    public String createAnuncio(Model model, Anuncio anuncio){
-        anuncioService.createAnuncio(anuncio);
-        model.addAttribute("anuncios", anuncioService.getAll());
-        return "anuncios_template";
+    public String createAnuncio(HttpServletRequest request, Model model, Anuncio anuncio){
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("email") != null) {
+            anuncioService.createAnuncio(anuncio);
+            model.addAttribute("anuncios", anuncioService.getAll());
+            return "anuncios_template";
+        } else {
+            return "redirect:/IniciarSesion"; // Redirigir al usuario a la página de inicio de sesión
+        }
     }
 }

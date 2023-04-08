@@ -1,10 +1,14 @@
 package urjc.code.controller;
 
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -13,11 +17,11 @@ import java.util.Map;
 @Controller
 public class UserController {
 
+    @Autowired
+    private UserService userService;
+
     //cuando alguien se registra
     private Map<String, String> users = new HashMap<>(); // HashMap para guardar usuario y contraseña
-
-    //ha iniciado sesion true, ha iniciado sesion false
-    private boolean isSessionActive = false;
 
     @GetMapping("/api/users")
     @ResponseBody
@@ -29,88 +33,48 @@ public class UserController {
     public String CuentasUsuarioAdmin(Model model){
         return "CuentasUsuarioAdmin.html";
     }
+
     @PostMapping("/login/")
-    public String login(@RequestParam String email, @RequestParam String password,
-                        HttpServletResponse response,
-                        @CookieValue(value = "userEmailSession", required = false) String userEmail) {
-
-        // Check if session is active
-        if (isSessionActive) {
-            return "redirect:/CuentasUsuarioAdmin.html?message=session_already_active";
-        }
-
-        // Comprobar si el usuario y contraseña son correctos
-        if (users.containsKey(email) && users.get(email).equals(password)) {
-
-            // Guardar el email del usuario en una cookie de sesión que expire en 1 día
-            Cookie cookie = new Cookie("userEmailSession", email);
-            cookie.setMaxAge(60 * 60 * 24); // Expire en 1 día
-            response.addCookie(cookie);
-
-            // Establecer la sesión como activa
-            isSessionActive = true;
-
-            // Redirigir al usuario a la página de inicio con mensaje de éxito
+    public String loginUser(@RequestParam("email") String email,
+                            @RequestParam("password") String password,
+                            HttpServletRequest request,
+                            Model model) {
+        User user = userService.authenticateUser(email, password);
+        if (user != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("email", email);
             return "redirect:/index.html?message=success";
         }
-
-        // Si el usuario y/o contraseña no son correctos, redirigir a la página de registro con mensaje error
-        return "redirect:/CuentasUsuarioAdmin.html?message=error&errorType=email";
+        return "redirect:/CuentasUsuarioAdmin.html?message=error";
     }
+
 
     @PostMapping("/register/")
-    public String register(HttpServletResponse response, @RequestParam String email, @RequestParam String pswd,
-                           @RequestParam(required = false, defaultValue = "user") String role
-    ) {
+    public String register(@RequestParam String email, @RequestParam String password,
+                           @RequestParam(required = false, defaultValue = "user") String role,
+                           HttpServletRequest request) {
 
-        // Comprobar si el email ya existe en el HashMap
-        if (users.containsKey(email)) {
-            // Si el email ya existe, redirigir al usuario a la página de registro con un mensaje de error
-            //return "redirect:/register?error=email";
-            return "redirect:/CuentasUsuarioAdmin.html?message=error&errorType=email";
+        User newUser = new User(email, password, role);
 
-        } else {
-            // Si el email no existe, crear un nuevo objeto User con los datos proporcionados por el usuario
-            User newUser = new User(email, pswd, role);
-
-            // Agregar el nuevo usuario al HashMap "users"
-            users.put(email, pswd);
-
-            // Guardar el email del usuario en una cookie de sesión que expire en 1 día
-            Cookie cookie = new Cookie("userEmailSession", email);
-            cookie.setMaxAge(60 * 60 * 24); // Expire en 1 día
-            response.addCookie(cookie);
-
-            // Redirigir al usuario a la página de inicio de sesión
-            //return "redirect:/index.html";
+        if (userService.registrarUsuario(newUser)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("email", email);
             return "redirect:/index.html?message=success";
+        } else {
+            return "redirect:/CuentasUsuarioAdmin.html?message=error&errorType=email";
         }
     }
+
 
     @PostMapping("/logout/")
-    public String logout(HttpServletResponse response, @CookieValue(value = "userEmailSession", defaultValue = "") String userEmail) {
-
-        // Eliminar las cookies de la sesión actual
-        Cookie cookieUserEmail = new Cookie("userEmail", "");
-        cookieUserEmail.setMaxAge(0);
-        response.addCookie(cookieUserEmail);
-
-        Cookie cookieUserEmailSession = new Cookie("userEmailSession", "");
-        cookieUserEmailSession.setMaxAge(0);
-        response.addCookie(cookieUserEmailSession);
-
-        // Establecer la sesión como no activa
-        isSessionActive = false;
-
-        // Obtener el nombre de usuario a partir de la cookie de sesión
-        String username = "";
-        if (!userEmail.isEmpty()) {
-            username = userEmail.split("@")[0];
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
         }
-
-        // Mostrar mensaje de éxito
         return "redirect:/index.html?message=logout";
     }
+
 
     @PostMapping("/admin_login/")
     public String adminlogin(@RequestParam String email, @RequestParam String password, @RequestParam String role,
